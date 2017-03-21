@@ -1,7 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-distDir = 'dist'
+ext {
+    distDir = 'dist'
+}
 
 if(project.hasProperty('standalone')) {
     group = 'name.kazennikov'
@@ -27,10 +29,9 @@ dependencies {
 }
 
 task dist(type: Copy, dependsOn : [jar]) {
-    into "${distDir}"
 
-    into('libs') {
-        from configurations.runtime
-        from "${buildDir}/libs"
-    }
+    into("dist")
+    from configurations.runtime
+    from "${buildDir}/libs"
+    
 }
