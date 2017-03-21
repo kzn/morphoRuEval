@@ -370,12 +370,12 @@ public class AOTFullDict implements Serializable {
 
 
 
-    public void build(File morphoRuEvalDict) throws Exception {
+    public void build(File morphoConfig, File morphoRuEvalDict) throws Exception {
 
 
         AOTFullDict fd = new AOTFullDict();
 
-        MorphConfig mc = MorphConfig.newInstance(new File("modules/jaot/russian.xml"));
+        MorphConfig mc = MorphConfig.newInstance(morphoConfig);
 
         MorphLanguage ml = new MorphLanguage(mc);
 
@@ -687,7 +687,7 @@ public class AOTFullDict implements Serializable {
         conv.readMap(new File("modules/morphoRuEval/aot2ud.txt"));
 
         dict.conv = conv;
-        dict.build(new File("modules/morphoRuEval/morphoRuEval.dict.txt"));
+        dict.build(new File("modules/jaot/russian.xml"), new File("modules/morphoRuEval/morphoRuEval.dict.txt"));
         dict.mapSubst(new File("morphoRuEval/full_corpora.txt"));
         dict.write(new File("morphoRuEval.aot_dict.dat"));
         dict.read(new File("morphoRuEval.aot_dict.dat"));
