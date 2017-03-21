@@ -1,6 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
+distDir = 'dist'
+
 if(project.hasProperty('standalone')) {
     group = 'name.kazennikov'
     description = "morphoRuEval"
