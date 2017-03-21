@@ -17,13 +17,15 @@ public class FinalTagger {
         System.out.println("Building dict..");
         AOTFullDict dict = new AOTFullDict();
         AOT2UD conv = new AOT2UD();
-        conv.readMap(new File("modules/morphoRuEval/aot2ud.txt"));
+        conv.readMap(new File("aot2ud.txt"));
 
         dict.conv = conv;
-        dict.build(new File("modules/morphoRuEval/morphoRuEval.dict.txt"));
+        dict.build(new File("aot/russian.xml"), new File("morphoRuEval.dict.txt"));
         dict.mapSubst(new File("morphoRuEval/full_corpora.txt"));
+
         dict.write(new File("morphoRuEval.aot_dict.dat"));
         dict.read(new File("morphoRuEval.aot_dict.dat"));
+
         System.out.println("Dict builded.");
 
         Lemmer lemmer = new Lemmer(new File("morphoRuEval/gikrya_fixed.txt"), new File("morphoRuEval.dict.dat"));
