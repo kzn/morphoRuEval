@@ -1,0 +1,109 @@
+С	NOUN
+П	ADJ
+Г	VERB,Fin
+МС
+МС-П	ADJ
+МС-ПРЕДК	ADV
+ЧИСЛ	NUM
+ЧИСЛ-П	ADJ
+Н	ADV
+ПРЕДК	ADV
+ПРЕДЛ
+ПОСЛ
+СОЮЗ
+МЕЖД	INTJ
+ВВОДН	ADV
+ФРАЗ
+ЧАСТ	PART
+КР_ПРИЛ	ADJ
+ПРИЧАСТИЕ	ADJ
+ДЕЕПРИЧАСТИЕ	VERB,Conv
+КР_ПРИЧАСТИЕ	ADJ
+ИНФИНИТИВ	VERB
+
+
+ед	Sing
+мн	Plur
+
+
+
+им	Nom
+рд	Gen
+дт	Dat
+вн	Acc
+тв	Ins
+пр	Loc
+зв	Loc
+
+
+мр	Masc
+жр	Fem
+ср	Neut
+
+
+
+нст	Notpast
+буд	Notpast
+прш	Past
+
+
+1л	1
+2л	2
+3л	3
+
+
+пвл	Imp
+
+
+од	Anim
+но	Inan
+
+
+сравн	Cmp
+кр	Brev
+
+
+
+св
+нс
+
+
+<group name="trans">
+нп
+пе
+</group>
+
+<group name="voice">
+дст
+стр
+</group>
+
+<group name="adv-type">
+вопр
+указат
+относ
+</group>
+
+
+0	Sing
+2
+
+безл	3
+
+
+<group name="misc">
+
+кач
+дфст
+жарг
+опч
+разг
+притяж
+арх
+поэт
+проф
+прев
+полож
+</group>
+
+</features>
