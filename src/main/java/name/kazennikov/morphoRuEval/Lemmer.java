@@ -12,8 +12,6 @@ import name.kazennikov.dafsa.obsolete.IntFSA;
 import name.kazennikov.fsa.BooleanFSABuilder;
 import name.kazennikov.fsa.walk.WalkFSABoolean;
 import name.kazennikov.logger.Logger;
-import name.kazennikov.morph.ISegGuesserSubst;
-import name.kazennikov.morph.Paradigm;
 import name.kazennikov.trove.TroveUtils;
 
 

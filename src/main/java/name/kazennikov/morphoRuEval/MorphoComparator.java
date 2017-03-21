@@ -1,7 +1,5 @@
 package name.kazennikov.morphoRuEval;
 
-import gate.creole.morph.Morph;
-
 import java.util.*;
 
 /**

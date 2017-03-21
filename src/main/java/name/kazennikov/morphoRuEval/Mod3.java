@@ -10,7 +10,7 @@ import name.kazennikov.ml.core.MulticlassProblem;
 import name.kazennikov.ml.core.SimpleInstance;
 import name.kazennikov.ml.svm.AbstractHKMulticlassCS;
 import name.kazennikov.ml.svm.DCDMCLinearHK;
-import name.kazennikov.utils.ThreadPoolUtils;
+import name.kazennikov.ThreadPoolUtils;
 import ru.iitp.proling.svm.MulticlassProblemBasic;
 
 import java.io.*;
