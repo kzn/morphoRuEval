@@ -14,7 +14,10 @@ import java.util.Objects;
  */
 public class MorphoRuEval {
     public static void main(String[] args) throws Exception {
-        Mod2 mod2 = new Mod2();
+        Lemmer lemmer = new Lemmer(new File("morphoRuEval/gikrya_fixed.txt"), new File("morphoRuEval.dict.dat"));
+        lemmer.readAOT(new File("morphoRuEval.aot_dict.dat"));
+
+        Mod2 mod2 = new Mod2(lemmer);
 
 
         List<Sentence> train = CorpusReader.readAll(new File("morphoRuEval/Baseline/source/gikrya_train.txt"));

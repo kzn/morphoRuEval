@@ -370,7 +370,7 @@ public class AOTFullDict implements Serializable {
 
 
 
-    public void build() throws Exception {
+    public void build(File morphoRuEvalDict) throws Exception {
 
 
         AOTFullDict fd = new AOTFullDict();
@@ -455,50 +455,52 @@ public class AOTFullDict implements Serializable {
         }
 
 
-        File morphoRuEvalDict = new File("morphoRuEval.dict.txt");
-        if(morphoRuEvalDict.exists()) {
+        //
+        if(morphoRuEvalDict != null && !morphoRuEvalDict.exists()) {
+            throw new Exception("Aux dict file is not null, but file doesn't exist");
+        }
 
-            try(BufferedReader br = Files.newReader(morphoRuEvalDict, Charset.forName("UTF-8"))) {
-                while(true) {
-                    String s = br.readLine();
-                    if(s == null)
-                        break;
-                    if(s.isEmpty() || s.startsWith("#"))
-                        continue;
+        try(BufferedReader br = Files.newReader(morphoRuEvalDict, Charset.forName("UTF-8"))) {
+            while(true) {
+                String s = br.readLine();
+                if(s == null)
+                    break;
+                if(s.isEmpty() || s.startsWith("#"))
+                    continue;
 
-                    String[] parts = s.split("\t");
+                String[] parts = s.split("\t");
 
-                    String wf = parts[0];
-                    String lemma = parts[1];
-                    String pos = parts[2];
+                String wf = parts[0];
+                String lemma = parts[1];
+                String pos = parts[2];
 
-                    if(lemma.isEmpty()) {
-                        lemma = wf;
-                    }
-
-
-                    List<String> feats = new ArrayList<>();
-
-                    if(parts.length == 4) {
-                        feats.addAll(Arrays.asList(parts[3].split("\\s*,\\s*")));
-                    }
-
-                    int common = Utils.commonPrefix(wf, lemma);
-
-
-
-                    Subst subst = new Subst(wf.substring(common), lemma.substring(common), pos, feats);
-                    int substId = substs.get(subst);
-
-                    l.resetQuick();
-                    TroveUtils.expand(l, wf);
-                    l.add(0);
-                    l.add(substId);
-                    incSubstFreq(substId);
-                    builder.addMinWord(l);
+                if(lemma.isEmpty()) {
+                    lemma = wf;
                 }
+
+
+                List<String> feats = new ArrayList<>();
+
+                if(parts.length == 4) {
+                    feats.addAll(Arrays.asList(parts[3].split("\\s*,\\s*")));
+                }
+
+                int common = Utils.commonPrefix(wf, lemma);
+
+
+
+                Subst subst = new Subst(wf.substring(common), lemma.substring(common), pos, feats);
+                int substId = substs.get(subst);
+
+                l.resetQuick();
+                TroveUtils.expand(l, wf);
+                l.add(0);
+                l.add(substId);
+                incSubstFreq(substId);
+                builder.addMinWord(l);
             }
         }
+
 
 
 
@@ -682,10 +684,10 @@ public class AOTFullDict implements Serializable {
 
         AOTFullDict dict = new AOTFullDict();
         AOT2UD conv = new AOT2UD();
-        conv.readMap(new File("aot2ud.txt"));
+        conv.readMap(new File("modules/morphoRuEval/aot2ud.txt"));
 
         dict.conv = conv;
-        dict.build();
+        dict.build(new File("modules/morphoRuEval/morphoRuEval.dict.txt"));
         dict.mapSubst(new File("morphoRuEval/full_corpora.txt"));
         dict.write(new File("morphoRuEval.aot_dict.dat"));
         dict.read(new File("morphoRuEval.aot_dict.dat"));

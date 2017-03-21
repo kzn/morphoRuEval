@@ -44,9 +44,8 @@ public class Mod2 {
 
 
 
-    public Mod2() throws Exception {
-        lemmer = new Lemmer(new File("morphoRuEval/gikrya_fixed.txt"), new File("morphoRuEval.dict.dat"));
-        lemmer.readAOT(new File("morphoRuEval.aot_dict.dat"));
+    public Mod2(Lemmer lemmer) throws Exception {
+        this.lemmer = lemmer;
     }
 
     public void train(List<Sentence> train, int dim) throws Exception {
@@ -98,7 +97,7 @@ public class Mod2 {
 
 
 
-        ThreadPoolExecutor executor = ThreadPoolUtils.newBlockingThreadPoolExecutor(2, 2, 300, TimeUnit.SECONDS, 2);
+        ThreadPoolExecutor executor = ThreadPoolUtils.newBlockingThreadPoolExecutor(4, 4, 300, TimeUnit.SECONDS, 4);
 
 
         System.out.printf("Training for POS%n");
@@ -502,7 +501,10 @@ public class Mod2 {
 
         Random rnd = new Random(0xdeadbeef);
         double f = 0.1;
-        Mod2 mod2 = new Mod2();
+        Lemmer lemmer = new Lemmer(new File("morphoRuEval/gikrya_fixed.txt"), new File("morphoRuEval.dict.dat"));
+        lemmer.readAOT(new File("morphoRuEval.aot_dict.dat"));
+
+        Mod2 mod2 = new Mod2(lemmer);
 
         List<Sentence> train = new ArrayList<>();
         List<Sentence> test = new ArrayList<>();

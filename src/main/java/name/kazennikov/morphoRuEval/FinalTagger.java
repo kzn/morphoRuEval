@@ -13,10 +13,25 @@ import java.util.Random;
  */
 public class FinalTagger {
     public static void main(String[] args) throws Exception {
-
-        Random rnd = new Random(0xdeadbeef);
         double f = 0.1;
-        Mod2 mod2 = new Mod2();
+        System.out.println("Building dict..");
+        AOTFullDict dict = new AOTFullDict();
+        AOT2UD conv = new AOT2UD();
+        conv.readMap(new File("modules/morphoRuEval/aot2ud.txt"));
+
+        dict.conv = conv;
+        dict.build(new File("modules/morphoRuEval/morphoRuEval.dict.txt"));
+        dict.mapSubst(new File("morphoRuEval/full_corpora.txt"));
+        dict.write(new File("morphoRuEval.aot_dict.dat"));
+        dict.read(new File("morphoRuEval.aot_dict.dat"));
+        System.out.println("Dict builded.");
+
+        Lemmer lemmer = new Lemmer(new File("morphoRuEval/gikrya_fixed.txt"), new File("morphoRuEval.dict.dat"));
+        lemmer.readAOT(new File("morphoRuEval.aot_dict.dat"));
+
+
+
+        Mod2 mod2 = new Mod2(lemmer);
 
         List<Sentence> train = new ArrayList<>();
 
