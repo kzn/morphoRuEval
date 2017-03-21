@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+if(project.hasProperty('standalone')) {
+    group = 'name.kazennikov'
+    description = "morphoRuEval"
+    version = '0.0.1-SNAPSHOT'
+}
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+    compile "net.sf.trove4j:trove4j:$trove4jVersion"
+    compile "com.google.guava:guava:$guavaVersion"
+    compile 'colt:colt:1.2.0'
+    compile project(':modules:common')
+    compile project(':modules:fsa')
+    compile project(':modules:ml')
+    compile project(':modules:jaot')
+}
