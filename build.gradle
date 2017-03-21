@@ -23,3 +23,12 @@ dependencies {
     compile project(':modules:ml')
     compile project(':modules:jaot')
 }
+
+task dist(type: Copy, dependsOn : [jar]) {
+    into "${distDir}"
+
+    into('libs') {
+        from configurations.runtime
+        from "${buildDir}/libs"
+    }
+}
