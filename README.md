@@ -7,6 +7,11 @@
   - Распаковать архив СинТагРус (morphoRuEval/SYNTAGRUS_texts.zip) в директории morphoRuEval
   - Создать файл morphoRuEval/corpus_full.txt с помощью конкатенации файлов morphoRuEval/gikrya_fixed.txt и syntagrus_full.ud
   - Распаковать тестовые данные в morphoRuEval/test
+  - Создать директорию modules в корне проекта и склонировать в нее репозитории
+     - https://github.com/kzn/common
+     - https://github.com/kzn/fsa
+     - https://github.com/kzn/ml
+     - https://github.com/kzn/jaot
 - Для сборки используется Gradle: https://gradle.org/
 - Сборка проекта осуществляется командой: gradle dist. В результате в директории dist будут доступны jar-файлы проекта и и всех зависимостей
 - После сборки можно запустить процедуру обучения и разметки тествой коллекции. Это выполняется с помощью команды java -cp dist/\* name.kazennikov.morphoRuEval.FinalTagger
