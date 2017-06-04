@@ -1,5 +1,10 @@
 # morphoRuEval
+
 Код по соревнованию MorphoRuEval
+
+Сам метод представлен в:
+  - статье http://www.dialog-21.ru/media/3916/kazennikovao.pdf
+  - презентации https://www.slideshare.net/kzn/morphorueval2017-partofspeech-tagging-the-power-of-the-linear-svmbased-filtration-method-for-russian-language
 
 - Весь код экспериментальный, поэтому необходимы некоторые предварительные действия для воспроизведения результатов прогона. Все пути указаны относительно репозитория этого проекта.
   - Надо поместить весь репозиторий соревнования в директорию morphoRuEval
